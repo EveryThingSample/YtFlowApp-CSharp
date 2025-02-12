@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>accd3aa8-1ba0-4223-9bbe-0c431709210b</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{926ab91d-31b4-48c3-b9a4-e681349f27f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bridge">
+      <UniqueIdentifier>{e79db98f-4169-4c08-bcad-edcb60882a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CoreInterop">
+      <UniqueIdentifier>{a8ac6335-899d-4d59-8980-404e6f2cd8ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{2f60f3d1-c5ec-46c0-91a0-bbfa0cbd9ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\cppcoro">
+      <UniqueIdentifier>{99862ed7-ce62-4524-9e74-8adf8a65d372}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Class.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="_CoreRpc.cpp">
+      <Filter>Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="extension.cpp">
+      <Filter>Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="FfiConn.cpp">
+      <Filter>Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="FfiDb.cpp">
+      <Filter>Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreFfi.cpp">
+      <Filter>CoreInterop</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreProxy.cpp">
+      <Filter>CoreInterop</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreSubscription.cpp">
+      <Filter>CoreInterop</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreRpc.cpp">
+      <Filter>CoreInterop</Filter>
+    </ClCompile>
+    <ClCompile Include="YtflowCore.cpp">
+      <Filter>Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="cppcoro\async_mutex.cpp">
+      <Filter>Utils\cppcoro</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorBuffer.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskCoroutineSupport.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="_CoreRpc.h">
+      <Filter>Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="extension.h">
+      <Filter>Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="FfiConn.h">
+      <Filter>Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="FfiDb.h">
+      <Filter>Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreFfi.h">
+      <Filter>CoreInterop</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreProxy.h">
+      <Filter>CoreInterop</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreSubscription.h">
+      <Filter>CoreInterop</Filter>
+    </ClInclude>
+    <ClInclude Include="YtflowCore.h">
+      <Filter>Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="cppcoro\async_mutex.hpp">
+      <Filter>Utils\cppcoro</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreRpc.h">
+      <Filter>CoreInterop</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorBuffer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskCoroutineSupport.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Class.idl" />
+    <Midl Include="FfiConn.idl">
+      <Filter>Bridge</Filter>
+    </Midl>
+    <Midl Include="FfiDb.idl">
+      <Filter>Bridge</Filter>
+    </Midl>
+    <Midl Include="YtflowCore.idl">
+      <Filter>Bridge</Filter>
+    </Midl>
+    <Midl Include="CoreRpc.idl">
+      <Filter>Bridge</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="YtFlowAppBridge.def" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+</Project>

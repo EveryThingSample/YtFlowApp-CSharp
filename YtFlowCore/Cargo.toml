@@ -1,0 +1,11 @@
+[workspace]
+members = ["ytflow", "ytflow-app-util", "ytflow-bin", "ytflow-bin-shared"]
+resolver = "2"
+
+[patch.crates-io]
+rusqlite = { git = "https://github.com/YtFlow/rusqlite", branch = "winsqlite-0.31" }
+
+[profile.release]
+debug = true
+lto = true
+codegen-units = 1

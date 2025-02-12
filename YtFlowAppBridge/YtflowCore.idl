@@ -1,0 +1,24 @@
+
+namespace YtFlowAppBridge.Bridge
+{
+    [default_interface] runtimeclass YtflowCore {
+        static Windows.Foundation.Collections.IVectorView<UInt8> Verify(
+            String plugin, UInt16 pluginVersion, Windows.Foundation.Collections.IVectorView<UInt8> param);
+        static Windows.Foundation.Collections.IVectorView<UInt8> ytflow_app_proxy_data_proxy_compose_v1(
+            Windows.Foundation.Collections.IVectorView<UInt8> proxy);
+        static Windows.Foundation.Collections.IVectorView<UInt8> ytflow_app_proxy_data_proxy_analyze(
+            String name, Windows.Foundation.Collections.IVectorView<UInt8> proxy_data, UInt16 proxy_version);
+
+        static String ConvertDataProxyToShareLink(
+            String name, Windows.Foundation.Collections.IVectorView<UInt8> proxy_data, UInt16 proxy_version);
+
+        static Windows.Foundation.Collections.IVectorView<UInt8> ytflow_app_share_link_decode(String link);
+        static Windows.Foundation.Collections.IVectorView<UInt8> DecodeSubscriptionUserInfoFromResponseHeaderValue(
+            String headerStr);
+        static Windows.Foundation.Collections.IVectorView<UInt8> ytflow_app_subscription_decode(
+            Windows.Foundation.Collections.IVectorView<UInt8> data, out String decodedFormat);
+        static Windows.Foundation.Collections.IVectorView<UInt8> ytflow_app_subscription_decode_with_format(
+            Windows.Foundation.Collections.IVectorView<UInt8> data, String decodedFormat);
+    };
+
+}

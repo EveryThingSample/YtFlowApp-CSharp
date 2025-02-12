@@ -1,0 +1,19 @@
+[package]
+name = "ytflow-bin"
+version = "0.7.3"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "ytflow-core"
+path = "src/core.rs"
+
+[[bin]]
+name = "ytflow-edit"
+path = "src/edit.rs"
+
+[dependencies]
+
+[build-dependencies]
+ytflow-bin-shared = { path = "../ytflow-bin-shared", artifact = "cdylib" }

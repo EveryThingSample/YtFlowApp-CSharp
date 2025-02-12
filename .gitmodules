@@ -1,0 +1,10 @@
+[submodule "YtFlowCore"]
+	path = YtFlowCore
+	url = https://github.com/YtFlow/YtFlowCore
+[submodule "RxCpp"]
+	path = RxCpp
+	url = https://github.com/ReactiveX/RxCpp.git
+	branch = releases/v4.1.1
+[submodule "vcpkg"]
+	path = vcpkg
+	url = https://github.com/microsoft/vcpkg.git

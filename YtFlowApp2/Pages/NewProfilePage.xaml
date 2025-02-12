@@ -1,0 +1,325 @@
+﻿<Page
+    x:Class="YtFlowApp2.Pages.NewProfilePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YtFlowApp2.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
+    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,7)" xmlns:controls="using:YtFlowApp2.Controls" xmlns:local1="using:YtFlowApp2.Converter"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    Unloaded="Page_Unloaded"
+    NavigationCacheMode="Enabled">
+
+    <Page.Resources>
+        <Thickness x:Key="SubheaderMargin">0, 20, 0, 10</Thickness>
+        <local1:SplitRoutingModeToDescConverter x:Key="SplitRoutingModeToDescConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="MainGrid" Margin="14, 0, 60, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftCol" Width="*" />
+                <ColumnDefinition x:Name="MiddleCol" Width="0" />
+                <ColumnDefinition x:Name="RightCol" Width="0" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ContentControl
+                x:Name="HeaderControl"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Height="80"
+                Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}"
+            >
+                Create Profile
+            </ContentControl>
+            <ContentControl
+                x:Name="WelcomeHeaderControl"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0"
+                Height="80"
+                Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}"
+            >
+                Create a new Profile to get started
+            </ContentControl>
+
+            <StackPanel x:Name="LeftPanel" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
+                <TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                    Inbound mode
+                </TextBlock>
+                <muxc:RadioButtons x:Name="InboundModeButtons" SelectedIndex="0">
+                    <RadioButton Tag="fake">UWP VPN, Fake IP range</RadioButton>
+                    <RadioButton Tag="full">UWP VPN, Full IP range</RadioButton>
+                </muxc:RadioButtons>
+
+                <muxc:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Padding="0"
+                    Margin="0, 8, 0, 0"
+                >
+                    <muxc:Expander.Header>
+                        <TextBlock Style="{ThemeResource BaseTextBlockStyle}">
+                            Exclude domains from Fake IP
+                        </TextBlock>
+                    </muxc:Expander.Header>
+                    <TextBox
+                        x:Name="FakeIpFilterTextBox"
+                        Height="250"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        IsSpellCheckEnabled="False"
+                        Text=".msftconnecttest.com&#13;.msftncsi.com&#13;.lan&#13;localhost.ptlogin2.qq.com"
+                    ></TextBox>
+                </muxc:Expander>
+
+
+                <!-- Inbound connections from localhost will be blocked by sandbox. No plan for now. -->
+                <!-- TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                    Additional Inbound ports
+                </TextBlock>
+                <CheckBox IsEnabled="False">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+                        <TextBlock VerticalAlignment="Center" Margin="0, 0, 10, 0">SOCKS5</TextBlock>
+                        <TextBox PlaceholderText="Port" Text="9080" InputScope="Number" MaxLength="5" />
+                    </StackPanel>
+                </CheckBox -->
+            </StackPanel>
+
+            <StackPanel x:Name="MiddlePanel" Grid.Row="2" Grid.Column="0">
+                <TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                    Split Routing
+                </TextBlock>
+                <muxc:RadioButtons x:Name="SplitRoutingModeButtons" SelectedIndex="0" SelectionChanged="SplitRoutingModeButtons_SelectionChanged">
+                    <muxc:RadioButtons.Header>
+                        Presets
+                    </muxc:RadioButtons.Header>
+                    <muxc:RadioButtons.Template>
+                        <!-- Overriding the template to allow heterogeneous item size -->
+                        <ControlTemplate TargetType="muxc:RadioButtons">
+                            <StackPanel>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="HeaderContentPresenter.Foreground" Value="{ThemeResource RadioButtonsHeaderForegroundDisabled}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter x:Name="HeaderContentPresenter"
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{ThemeResource RadioButtonsHeaderForeground}"
+                                Margin="{ThemeResource RadioButtonsTopHeaderMargin}"/>
+                                <muxc:ItemsRepeater x:Name="InnerRepeater">
+                                    <muxc:ItemsRepeater.Layout />
+                                    <!-- primitives:ColumnMajorUniformToLargestGridLayout
+                                        MaxColumns="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MaxColumns}"
+                                        ColumnSpacing="{ThemeResource RadioButtonsColumnSpacing}"
+                                        RowSpacing="{ThemeResource RadioButtonsRowSpacing}"/ -->
+                                </muxc:ItemsRepeater>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </muxc:RadioButtons.Template>
+                    <RadioButton Tag="all" IsChecked="True">All Proxy</RadioButton>
+                    <RadioButton Tag="whitelist">Proxy all but CN</RadioButton>
+                    <RadioButton Tag="blacklist">Proxy non-CN only</RadioButton>
+                    <RadioButton Tag="overseas">Proxy CN only</RadioButton>
+                </muxc:RadioButtons>
+                <TextBlock
+                    Margin="0, 4, 0, 8"
+                    TextWrapping="Wrap"
+                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                    Text="{x:Bind ((RadioButton)SplitRoutingModeButtons.SelectedItem).Tag,
+                    Mode=OneWay,
+                    Converter={StaticResource SplitRoutingModeToDescConverter},
+                    FallbackValue=''}"
+                />
+                <muxc:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Padding="0, 0, 0, 20"
+                >
+                    <muxc:Expander.Header>
+                        <TextBlock Style="{ThemeResource BaseTextBlockStyle}">
+                            Rulesets
+                        </TextBlock>
+                    </muxc:Expander.Header>
+
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <ListView
+                            x:Name="RulesetListView"
+                            SelectionMode="None"
+                            CanReorderItems="True"
+                            CanDragItems="True"
+                            AllowDrop="True"
+                            ScrollViewer.VerticalScrollMode="Disabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        >
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.Footer>
+                                <StackPanel Margin="24, 16, 24, 0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="AddRulesetButton" Content="Add..." Click="AddRulesetButton_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </ListView.Footer>
+                        </ListView>
+                    </StackPanel>
+                </muxc:Expander>
+                <muxc:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Padding="0"
+                    Margin="0, 8, 0, 0"
+                >
+                    <muxc:Expander.Header>
+                        <TextBlock Style="{ThemeResource BaseTextBlockStyle}">
+                            Custom Rules
+                        </TextBlock>
+                    </muxc:Expander.Header>
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Button
+                            x:Name="CreateCustomRuleButton"
+                            Margin="24, 20, 0, 0"
+                            Click="CreateCustomRuleButton_Click"
+                        >
+                            Create
+                        </Button>
+                        <TextBox
+                            x:Name="CustomRuleTextBox"
+                            Height="250"
+                            AcceptsReturn="True"
+                            Visibility="Collapsed"
+                            TextWrapping="Wrap"
+                            IsSpellCheckEnabled="False"
+                        ></TextBox>
+                        <TextBlock
+                            Margin="24, 8, 24, 16"
+                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                            TextWrapping="Wrap"
+                        >
+                            Custom rules will take precedence over rulesets.
+                        </TextBlock>
+                    </StackPanel>
+                </muxc:Expander>
+                <TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                    DNS provider for Rule Matching
+                </TextBlock>
+                <ComboBox x:Name="RuleResolverComboBox" SelectedIndex="1">
+                    <ComboBoxItem Tag="local">Local Resolver</ComboBoxItem>
+                    <ComboBoxItem Tag="1111">1.1.1.1 (DoH)</ComboBoxItem>
+                    <ComboBoxItem Tag="ali">Alibaba Cloud Public DNS (DoH)</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel x:Name="RightPanel" Grid.Row="3" Grid.Column="0">
+                <TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                    Outbound
+                </TextBlock>
+                <CheckBox x:Name="DynOutboundButton" Tag="dyn" IsChecked="True" Unchecked="DynOutboundButton_Unchecked">Dynamic Outbound</CheckBox>
+                <TextBlock x:Name="DynOutboundEnabledText" Margin="0, 4, 0, 8" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                    <Run>
+                        Use proxy servers imported from Asset page. To activate an existing proxy server, click 
+                    </Run>
+                    <Run FontFamily="Consolas">
+                        Select...
+                    </Run>
+                    <Run>
+                        under 
+                    </Run>
+                    <Run FontFamily="Consolas">
+                        outbound
+                    </Run>
+                    <Run>
+                        section while YtFlow VPN is connected.
+                    </Run>
+                </TextBlock>
+                <TextBlock x:Name="DynOutboundDisabledText" Margin="0, 4, 0, 8" Visibility="Collapsed" TextWrapping="Wrap" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}">
+                    Manually configure parameters for outbound plugins in the Profile Editor. Not recommended for beginners.
+                </TextBlock>
+                <RadioButton x:Name="SsButton" Tag="ss" IsEnabled="False" GroupName="OutboundType">Shadowsocks</RadioButton>
+                <RadioButton x:Name="TrojanButton" Tag="trojan" IsEnabled="False" GroupName="OutboundType">Trojan</RadioButton>
+                <RadioButton x:Name="VmessWsTlsButton" Tag="vmess_ws_tls" IsEnabled="False" GroupName="OutboundType">VMess + WebSocket + TLS</RadioButton>
+                <RadioButton x:Name="HttpButton" Tag="http" IsEnabled="False" GroupName="OutboundType">HTTP Proxy</RadioButton>
+
+                <StackPanel x:Name="SavePanel" Margin="0, 20, 0, 0">
+                    <TextBlock Margin="{StaticResource SubheaderMargin}" Style="{ThemeResource BaseTextBlockStyle}">
+                        Profile Name
+                    </TextBlock>
+                    <TextBox x:Name="NewProfileNameText" TextChanged="NewProfileNameText_TextChanged"></TextBox>
+                    <Button x:Name="SaveButton" Margin="0, 20, 0, 60" Click="SaveButton_Click">Create</Button>
+                </StackPanel>
+            </StackPanel>
+
+            <controls:NewProfileRulesetControl x:Name="RulesetDialog" Grid.RowSpan="5" />
+            <ContentDialog
+                x:Name="DownloadRulesetConsentDialog"
+                Grid.RowSpan="5"
+                PrimaryButtonText="Continue"
+                contract7NotPresent:SecondaryButtonText="Close"
+            >
+                <contract7Present:ContentDialog.SecondaryButtonCommand>
+                    <contract7Present:StandardUICommand Kind="Close"/>
+                </contract7Present:ContentDialog.SecondaryButtonCommand>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch">
+                    <Run>Rulesets from the following sources will be downloaded if necessary:</Run>
+                    <LineBreak />
+                    <Hyperlink NavigateUri="https://github.com/Loyalsoldier/surge-rules">Loyalsoldier/surge-rules</Hyperlink>
+                    <LineBreak />
+                    <Hyperlink NavigateUri="https://github.com/Loyalsoldier/geoip">Loyalsoldier/geoip</Hyperlink>
+                    <LineBreak />
+                    <LineBreak />
+                    <Run>By clicking "Continue", you are agreeing to the terms and conditions stated in the sources above.</Run>
+                </TextBlock>
+            </ContentDialog>
+        </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumAdaptiveWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainGrid.Margin" Value="80, 0, 80, 20" />
+                        <Setter Target="LeftCol.Width" Value="4*" />
+                        <Setter Target="MiddleCol.Width" Value="5*" />
+                        <Setter Target="RightCol.Width" Value="4*" />
+                        <Setter Target="HeaderControl.Margin" Value="0, 40, 0, 0" />
+                        <Setter Target="HeaderControl.Height" Value="80" />
+                        <Setter Target="WelcomeHeaderControl.Margin" Value="0, 40, 0, 0" />
+                        <Setter Target="WelcomeHeaderControl.Height" Value="80" />
+                        <Setter Target="LeftPanel.(Grid.RowSpan)" Value="3" />
+                        <Setter Target="MiddlePanel.(Grid.Column)" Value="1" />
+                        <Setter Target="MiddlePanel.(Grid.Row)" Value="1" />
+                        <Setter Target="MiddlePanel.(Grid.RowSpan)" Value="3" />
+                        <Setter Target="MiddlePanel.Margin" Value="12, 0, 12, 0" />
+                        <Setter Target="RightPanel.(Grid.Column)" Value="2" />
+                        <Setter Target="RightPanel.(Grid.Row)" Value="1" />
+                        <Setter Target="RightPanel.(Grid.RowSpan)" Value="3" />
+                        <Setter Target="SaveButton.Margin" Value="0, 20, 0, 0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+</Page>

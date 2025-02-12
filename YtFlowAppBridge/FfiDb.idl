@@ -1,0 +1,20 @@
+import "FfiConn.idl";
+namespace YtFlowAppBridge.Bridge
+{
+    [default_interface] runtimeclass FfiDb {
+        // FfiDb();
+        String GetStr();
+        FfiDb Open(String dbPath);
+        static FfiDb Current
+        {
+            get;
+        };
+        Boolean IsOpened
+        {
+            get;
+        };
+        // Declare Equals method
+        Boolean Equals(Object obj);
+        YtFlowAppBridge.Bridge.FfiConn Connect();
+    }
+}

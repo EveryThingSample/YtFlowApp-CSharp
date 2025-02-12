@@ -1,0 +1,64 @@
+namespace YtFlowAppBridge.Bridge
+{
+    runtimeclass FfiConn
+    {
+        FfiConn();
+        // Methods
+        Windows.Foundation.Collections.IVectorView<UInt8> GetProfiles();
+        Windows.Foundation.Collections.IVectorView<UInt8> GetPluginsByProfile(UInt32 profileId);
+        Windows.Foundation.Collections.IVectorView<UInt8> GetEntryPluginsByProfile(UInt32 profileId);
+        Windows.Foundation.Collections.IVectorView<UInt8> GetProxyGroupById(UInt32 id);
+        Windows.Foundation.Collections.IVectorView<UInt8> GetProxyGroups();
+        Windows.Foundation.Collections.IVectorView<UInt8> GetProxiesByProxyGroup(UInt32 proxyGroupId);
+        Windows.Foundation.Collections.IVectorView<UInt8> GetResources();
+
+        //
+        Windows.Foundation.Collections.IVectorView<UInt8> /*FfiResourceGitHubRelease*/
+        GetResourceGitHubReleaseByResourceId(UInt32 resourceId);
+        Windows.Foundation.Collections.IVectorView<UInt8> /* FfiProxyGroupSubscription*/
+        GetProxySubscriptionByProxyGroup(UInt32 proxyGroupId);
+        Windows.Foundation.Collections.IVectorView<UInt8> /*FfiResourceUrl*/
+        GetResourceUrlByResourceId(UInt32 resourceId);
+        Windows.Foundation.Collections.IVectorView<UInt8> ParseProfileToml(
+            Windows.Foundation.Collections.IVectorView<UInt8> toml);
+
+        void DeleteProfile(UInt32 id);
+        UInt32 CreateProfile(String name, String locale);
+        void UpdateProfile(UInt32 id, String name, String locale);
+        String ExportProfileToml(UInt32 id);
+
+        void SetPluginAsEntry(UInt32 pluginId, UInt32 profileId);
+        void UnsetPluginAsEntry(UInt32 pluginId, UInt32 profileId);
+        void DeletePlugin(UInt32 id);
+        UInt32 CreatePlugin(UInt32 profileId, String name, String desc, String plugin, UInt16 pluginVersion,
+                            Windows.Foundation.Collections.IVectorView<UInt8> param);
+        void UpdatePlugin(UInt32 id, UInt32 profileId, String name, String desc, String plugin, UInt16 pluginVersion,
+                          Windows.Foundation.Collections.IVectorView<UInt8> param);
+
+        void RenameProxyGroup(UInt32 id, String name);
+        void DeleteProxyGroup(UInt32 id);
+        UInt32 CreateProxyGroup(String name, String type);
+        UInt32 CreateProxySubscriptionGroup(String name, String format, String url);
+
+        void UpdateProxySubscriptionRetrievedByProxyGroup(
+            UInt32 proxyGroupId, Windows.Foundation.IReference<UInt64> uploadBytes,
+            Windows.Foundation.IReference<UInt64> downloadBytes, Windows.Foundation.IReference<UInt64> totalBytes,
+            String expiresAt);
+        UInt32 CreateProxy(UInt32 proxyGroupId, String name, Windows.Foundation.Collections.IVectorView<UInt8> proxy,
+                           UInt16 proxyVersion);
+        void UpdateProxy(UInt32 proxyId, String name, Windows.Foundation.Collections.IVectorView<UInt8> proxy,
+                         UInt16 proxyVersion);
+        void DeleteProxy(UInt32 proxyId);
+        void ReorderProxy(UInt32 proxyGroupId, Int32 rangeStartOrder, Int32 rangeEndOrder, Int32 moves);
+        void BatchUpdateProxyInGroup(UInt32 proxyGroupId,
+                                     Windows.Foundation.Collections.IVectorView<UInt8> newProxyBuf);
+
+        void DeleteResource(UInt32 resourceId);
+        UInt32 CreateResourceWithUrl(String key, String type, String localFile, String url);
+        UInt32 CreateResourceWithGitHubRelease(String key, String type, String localFile, String githubUsername,
+                                               String githubRepo, String assetName);
+
+        void UpdateResourceUrlRetrievedByResourceId(UInt32 resourceId, String etag, String lastModified);
+        void UpdateResourceGitHubReleaseRetrievedByResourceId(UInt32 resourceId, String gitTag, String releaseTitle);
+    }
+}

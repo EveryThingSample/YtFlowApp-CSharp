@@ -1,0 +1,18 @@
+
+
+namespace YtFlowAppBridge.Bridge
+{
+    runtimeclass CoreRpc : Windows.Foundation.IClosable
+    {
+        static Windows.Foundation.IAsyncOperation<YtFlowAppBridge.Bridge.CoreRpc> ConnectAsync();
+
+        Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVectorView<UInt8> > CollectAllPluginInfoAsync(
+            Windows.Foundation.Collections.IMapView<UInt32, UInt32> hashcodes);
+
+        Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVectorView<UInt8> > SendRequestToPluginAsync(
+            UInt32 pluginId, String func, Windows.Foundation.Collections.IVector<UInt8> params);
+
+        void Close();
+        void Dispose();
+    };
+}
