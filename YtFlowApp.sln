@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YtFlowVpnTask", "YtFlowVpnT
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YtFlowAppBridge", "YtFlowAppBridge\YtFlowAppBridge.vcxproj", "{D7E39EDD-9C71-49E3-A798-36C11C0E81D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YtFlowApp2", "YtFlowApp2\YtFlowApp2.csproj", "{38809771-78C5-41AB-A79E-4C3B6C17F329}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YtFlowApp-CSharp", "YtFlowApp-CSharp\YtFlowApp-CSharp.csproj", "{38809771-78C5-41AB-A79E-4C3B6C17F329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
