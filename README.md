@@ -1,11 +1,8 @@
-# YtFlowApp
-[![Build Status](https://dev.azure.com/YtFlow/YtFlowApp/_apis/build/status/YtFlow.YtFlowApp?branchName=next)](https://dev.azure.com/YtFlow/YtFlowApp/_build/latest?definitionId=1&branchName=next) [![Telegram channel and group](https://img.shields.io/badge/Telegram-group-blue)](https://t.me/YtFlow) [![Join Beta testing](https://img.shields.io/badge/Join-Beta%20testing-blue)](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZAAJskVm9UMThNRlZRR1E5Q1dBMjM1MjFXVEk0UDlTMS4u)
+# YtFlowApp-CSharp
 
-<a href='https://www.microsoft.com/store/apps/9NMB8FHL7MBZ?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="240"/></a>
 
-YtFlow is a network debug tool running on Universal Windows Platform that forwards any network traffic through certain types of tunnels, powered by [YtFlowCore](https://github.com/YtFlow/YtFlowCore).
+YtFlowApp-CSharp is a network debug tool running on the Universal Windows Platform (UWP) that forwards any network traffic through certain types of tunnels, powered by YtFlowCore. This project is a rewrite of the UI pages in C# based on the original [YtFlowApp](https://github.com/YtFlow/YtFlowApp).
 
-[Join the Beta Testing program](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAZAAJskVm9UMThNRlZRR1E5Q1dBMjM1MjFXVEk0UDlTMS4u) to keep updated with the latest YtFlow Beta versions.
 
 ## Supported Features
 
