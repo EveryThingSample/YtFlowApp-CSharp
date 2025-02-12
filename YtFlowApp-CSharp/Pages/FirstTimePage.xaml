@@ -85,7 +85,7 @@ NavigationCacheMode="Enabled">
                         <TextBlock Style="{StaticResource FakeSettingItemLabel}">Connection name</TextBlock>
                         <TextBox Style="{StaticResource FakeSettingItemInput}" Text="{x:Bind  ProfileName}" IsReadOnly="True" />
                         <TextBlock Style="{StaticResource FakeSettingItemLabel}">Server name or address</TextBlock>
-                        <TextBox Style="{StaticResource FakeSettingItemInput}" Text="https://github.com/YtFlow" IsReadOnly="True" />
+                        <TextBox Style="{StaticResource FakeSettingItemInput}" Text="https://github.com/EveryThingSample/YtFlowApp-CSharp" IsReadOnly="True" />
                         <TextBlock
                             x:Name="FakeOtherOptions"
                             Style="{StaticResource FakeSettingItemLabel}"

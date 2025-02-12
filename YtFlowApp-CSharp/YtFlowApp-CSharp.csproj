@@ -303,11 +303,11 @@
       <ItemGroup>
         <Reference Include="YtFlowAppBridge, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
+          <HintPath>..\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
         </Reference>
         <Reference Include="YtFlowVpnTask, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
+          <HintPath>..\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
       </ItemGroup>
     </When>
@@ -315,11 +315,11 @@
       <ItemGroup>
         <Reference Include="YtFlowAppBridge, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\x64\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
+          <HintPath>..\x64\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
         </Reference>
         <Reference Include="YtFlowVpnTask, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\x64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
+          <HintPath>..\x64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
       </ItemGroup>
     </When>
@@ -327,11 +327,11 @@
       <ItemGroup>
         <Reference Include="YtFlowAppBridge, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\ARM64\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
+          <HintPath>..\ARM64\Release\YtFlowAppBridge\YtFlowAppBridge.winmd</HintPath>
         </Reference>
         <Reference Include="YtFlowVpnTask, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\..\YtFlowApp\ARM64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
+          <HintPath>..\ARM64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
       </ItemGroup>
     </When>
@@ -348,17 +348,17 @@
   </Target>
   -->
   <Target Name="CopyCryptoDll" AfterTargets="Build">
-    <Copy SourceFiles="..\..\YtFlowApp\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\..\YtFlowApp\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\..\YtFlowApp\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\..\YtFlowApp\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\..\YtFlowApp\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\..\YtFlowApp\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
+    <Copy SourceFiles="..\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
+    <Copy SourceFiles="..\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
+    <Copy SourceFiles="..\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
+    <Copy SourceFiles="..\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
+    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
+    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
+    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
+    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
+    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
+    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
+    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
+    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
   </Target>
 </Project>

@@ -37,13 +37,13 @@ namespace YtFlowApp2.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-             Window.Current.Activated += Current_Activated;
+            Window.Current.Activated += Current_Activated;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-           // if (_currentActivatedToken != 0)
+            // if (_currentActivatedToken != 0)
             {
                 Window.Current.Activated -= Current_Activated;
             }
@@ -64,10 +64,10 @@ namespace YtFlowApp2.Pages
                 var profile = await ConnectionState.GetInstalledVpnProfile();
                 if (profile == null)
                 {
-                    await AddCustomVpnProfileAsync();
-                    profile = await ConnectionState.GetInstalledVpnProfile();
-                    if (profile == null)
-                        return;
+                    //await AddCustomVpnProfileAsync();
+                    // profile = await ConnectionState.GetInstalledVpnProfile();
+                    // if (profile == null)
+                    return;
                 }
 
                 ConnectionState.Instance = new ConnectionState(profile);
@@ -88,7 +88,7 @@ namespace YtFlowApp2.Pages
         }
         public async Task AddCustomVpnProfileAsync()
         {
-    
+
             VpnManagementAgent vpnAgent = new VpnManagementAgent();
 
 
@@ -108,11 +108,11 @@ namespace YtFlowApp2.Pages
             //var ret = await vpnAgent.DeleteProfileAsync(vpnProfile);
             if (status == VpnManagementErrorStatus.Ok)
             {
-                
+
             }
             else
             {
-               
+
             }
         }
 
