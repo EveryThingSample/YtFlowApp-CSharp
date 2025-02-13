@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Vpn;
@@ -94,18 +95,17 @@ namespace YtFlowApp2.Pages
 
             VpnPlugInProfile vpnProfile = new VpnPlugInProfile
             {
-                ProfileName = "YtFlow Auto",
-                RequireVpnClientAppUI = true, // 如果不需要 UI，设置为 false
+                ProfileName = ProfileName,
+                RequireVpnClientAppUI = true,
                 AlwaysOn = false,
-                CustomConfiguration = "<CustomConfig><ServerAddress>vpn.example.com</ServerAddress></CustomConfig>", // 确保配置正确
+                CustomConfiguration = "<CustomConfig><ServerAddress>vpn.example.com</ServerAddress></CustomConfig>",
                 RememberCredentials = true,
-                VpnPluginPackageFamilyName = "56263bdbai.YtFlow_5wvpqmt3a9dj6" // 确保与插件包族名一致
+                VpnPluginPackageFamilyName = Package.Current.Id.FamilyName,
             };
 
-            vpnProfile.ServerUris.Add(new Uri("vpn://vpn.example.com")); // 确保 URI 格式正确
+            vpnProfile.ServerUris.Add(new Uri("vpn://vpn.example.com"));
 
             VpnManagementErrorStatus status = await vpnAgent.AddProfileFromObjectAsync(vpnProfile);
-            //var ret = await vpnAgent.DeleteProfileAsync(vpnProfile);
             if (status == VpnManagementErrorStatus.Ok)
             {
 
