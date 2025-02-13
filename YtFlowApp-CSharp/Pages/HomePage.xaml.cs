@@ -88,7 +88,7 @@ namespace YtFlowApp2.Pages
                 {
                     if (null == await ConnectionState.InitializeAsync())
                     {
-
+                        await Task.Delay(400);
                         Frame.Navigate(typeof(FirstTimePage));
                         return;
                     }
@@ -101,10 +101,9 @@ namespace YtFlowApp2.Pages
                     if (profile == null)
                     {
                         await Task.Delay(400);
-                        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                        {
-                            Frame.Navigate(typeof(FirstTimePage));
-                        });
+
+                        Frame.Navigate(typeof(FirstTimePage));
+
                         return;
                     }
                     else
