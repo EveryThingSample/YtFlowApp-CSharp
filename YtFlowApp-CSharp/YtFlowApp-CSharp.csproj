@@ -309,6 +309,12 @@
           <SpecificVersion>False</SpecificVersion>
           <HintPath>..\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
+		<Content Include="..\Release\YtFlowAppBridge\libcrypto-3.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\Release\YtFlowAppBridge\libssl-3.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
       </ItemGroup>
     </When>
     <When Condition="'$(Platform)' == 'x64'">
@@ -321,6 +327,12 @@
           <SpecificVersion>False</SpecificVersion>
           <HintPath>..\x64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
+		<Content Include="..\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\x64\Release\YtFlowAppBridge\libssl-3-x64.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
       </ItemGroup>
     </When>
     <When Condition="'$(Platform)' == 'ARM64'">
@@ -333,6 +345,12 @@
           <SpecificVersion>False</SpecificVersion>
           <HintPath>..\ARM64\Release\YtFlowVpnTask\YtFlowVpnTask.winmd</HintPath>
         </Reference>
+		<Content Include="..\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
       </ItemGroup>
     </When>
   </Choose>
@@ -346,19 +364,7 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
-  -->
   <Target Name="CopyCryptoDll" AfterTargets="Build">
-    <Copy SourceFiles="..\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\Release\YtFlowAppBridge\libcrypto-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\Release\YtFlowAppBridge\libssl-3.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x86'" />
-    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libcrypto-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\x64\Release\YtFlowAppBridge\libssl-3-x64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'x64'" />
-    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libcrypto-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
-    <Copy SourceFiles="..\ARM64\Release\YtFlowAppBridge\libssl-3-arm64.dll" DestinationFolder="$(OutDir)/AppX" Condition="$(Platform) == 'ARM64'" />
   </Target>
+  -->
 </Project>
